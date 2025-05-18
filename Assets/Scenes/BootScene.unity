@@ -177,11 +177,23 @@ PrefabInstance:
       objectReference: {fileID: 968626924}
     - target: {fileID: 114937748117785014, guid: d4353500a4689e444a5a0ed100a259e5, type: 3}
       propertyPath: displaySettings.subtitleSettings.continueButton
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114937748117785014, guid: d4353500a4689e444a5a0ed100a259e5, type: 3}
+      propertyPath: displaySettings.subtitleSettings.allowPCSubtitleReminders
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114937748117785014, guid: d4353500a4689e444a5a0ed100a259e5, type: 3}
+      propertyPath: displaySettings.subtitleSettings.requireContinueOnLastLine
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114937748117785014, guid: d4353500a4689e444a5a0ed100a259e5, type: 3}
       propertyPath: displaySettings.subtitleSettings.showPCSubtitlesDuringLine
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114937748117785014, guid: d4353500a4689e444a5a0ed100a259e5, type: 3}
+      propertyPath: displaySettings.subtitleSettings.showNPCSubtitlesWithResponses
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114937748117785014, guid: d4353500a4689e444a5a0ed100a259e5, type: 3}
       propertyPath: displaySettings.subtitleSettings.skipPCSubtitleAfterResponseMenu
@@ -697,13 +709,13 @@ MonoBehaviour:
       portraitLabelName: NPCPortraitLabel
       portraitImageName: NPCPortraitImage
       continueButtonName: NPCContinueButton
-      visibility: 0
+      visibility: 1
     - subtitlePanelName: PCSubtitlePanel
       subtitleLabelName: PCSubtitleLabel
       portraitLabelName: PCPortraitLabel
       portraitImageName: PCPortraitImage
       continueButtonName: PCContinueButton
-      visibility: 0
+      visibility: 1
     responseMenuElements:
       buttonAlignment: 0
       showUnusedButtons: 0

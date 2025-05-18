@@ -243,11 +243,11 @@ MonoBehaviour:
       - title: Title
         value: Start
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Description
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Actor
         value: 1
         type: 5
@@ -259,18 +259,18 @@ MonoBehaviour:
       - title: Menu Text
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: You stand atop the tallest mountain, exhausted after your long ascent.
           Stormclouds churn above. You see no sign of the storm god Goru. Nor do
           you hear him. After all, he does not speak. A wide bowl rests on flat stone,
           waiting.
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Sequence
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       conversationID: 1
       isRoot: 0
       isGroup: 0
@@ -304,8 +304,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 200
-        y: 255
+        x: 204
+        y: 252
         width: 160
         height: 30
     - id: 5
@@ -553,7 +553,7 @@ MonoBehaviour:
     - id: 13
       fields:
       - title: Title
-        value: Toss a stone at the storm.|Stone Link 1
+        value: Toss
         type: 0
         typeString: 
       - title: Description
@@ -565,7 +565,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 2
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -613,7 +613,7 @@ MonoBehaviour:
     - id: 14
       fields:
       - title: Title
-        value: Place a berry in the bowl.|Berry Link 1
+        value: Berry
         type: 0
         typeString: 
       - title: Description
@@ -625,7 +625,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 2
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -673,7 +673,7 @@ MonoBehaviour:
     - id: 15
       fields:
       - title: Title
-        value: Cry out to Goru.|Shout Link 1
+        value: Shout
         type: 0
         typeString: 
       - title: Description
@@ -685,7 +685,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 2
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -729,14 +729,14 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 380
-        y: 421.6667
+        x: 384
+        y: 420
         width: 160
         height: 30
     - id: 19
       fields:
       - title: Title
-        value: Offer the relic directly.|OfferRelic Link 5
+        value: Offer
         type: 0
         typeString: 
       - title: Description
@@ -748,7 +748,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 2
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -797,7 +797,7 @@ MonoBehaviour:
     - id: 20
       fields:
       - title: Title
-        value: Hurl the relic into the storm.|DestroyRelic Link 5
+        value: Destroy
         type: 0
         typeString: 
       - title: Description
@@ -809,7 +809,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 2
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -860,7 +860,7 @@ MonoBehaviour:
     - id: 21
       fields:
       - title: Title
-        value: Sit in silence beside the bowl.|Restraint Link 5
+        value: Restraint
         type: 0
         typeString: 
       - title: Description
@@ -872,7 +872,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 2
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -1496,8 +1496,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1104
-        y: 480
+        x: 1092
+        y: 468
         width: 160
         height: 30
     - id: 54
@@ -1672,7 +1672,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
+    canvasScrollPosition: {x: 0, y: 61.06061}
     canvasZoom: 1.1000001
   syncInfo:
     syncActors: 0
@@ -1683,7 +1683,7 @@ MonoBehaviour:
     syncItemsDatabase: {fileID: 0}
     syncLocationsDatabase: {fileID: 0}
     syncVariablesDatabase: {fileID: 0}
-  templateJson: '{"treatItemsAsQuests":true,"actorFields":[{"title":"Name","value":"","type":0,"typeString":""},{"title":"Pictures","value":"[]","type":3,"typeString":"CustomFieldType_Files"},{"title":"Description","value":"","type":0,"typeString":""},{"title":"IsPlayer","value":"False","type":2,"typeString":"CustomFieldType_Boolean"}],"itemFields":[{"title":"Name","value":"","type":0,"typeString":""},{"title":"Pictures","value":"[]","type":3,"typeString":"CustomFieldType_Files"},{"title":"Description","value":"","type":0,"typeString":""},{"title":"Is
+  templateJson: '{"treatItemsAsQuests":true,"actorFields":[{"title":"Name","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Pictures","value":"[]","type":3,"typeString":"CustomFieldType_Files"},{"title":"Description","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"IsPlayer","value":"False","type":2,"typeString":"CustomFieldType_Boolean"}],"itemFields":[{"title":"Name","value":"","type":0,"typeString":""},{"title":"Pictures","value":"[]","type":3,"typeString":"CustomFieldType_Files"},{"title":"Description","value":"","type":0,"typeString":""},{"title":"Is
     Item","value":"True","type":2,"typeString":"CustomFieldType_Boolean"}],"questFields":[{"title":"Name","value":"","type":0,"typeString":""},{"title":"Pictures","value":"[]","type":3,"typeString":"CustomFieldType_Files"},{"title":"Description","value":"","type":0,"typeString":""},{"title":"Success
     Description","value":"","type":0,"typeString":""},{"title":"Failure Description","value":"","type":0,"typeString":""},{"title":"State","value":"unassigned","type":0,"typeString":""},{"title":"Is
     Item","value":"False","type":2,"typeString":"CustomFieldType_Boolean"}],"locationFields":[{"title":"Name","value":"","type":0,"typeString":""},{"title":"Description","value":"","type":0,"typeString":""}],"variableFields":[{"title":"Name","value":"","type":0,"typeString":""},{"title":"Initial
