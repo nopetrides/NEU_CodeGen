@@ -173,7 +173,13 @@ namespace PixelCrushers.DialogueSystem.UIToolkit
 
         public override void ShowResponses(Subtitle subtitle, Response[] responses, float timeout)
         {
-            base.ShowResponses(subtitle, responses, timeout);
+            // Don't hide the subtitle panel when showing responses
+            // This allows the previous subtitle to remain visible while showing responses
+            if (dialogueElements.responseMenuControls != null)
+            {
+                dialogueElements.responseMenuControls.ShowResponses(subtitle, responses, this.transform);
+                if (timeout > 0) dialogueElements.responseMenuControls.StartTimer(timeout);
+            }
         }
 
         #region Static Utility Methods

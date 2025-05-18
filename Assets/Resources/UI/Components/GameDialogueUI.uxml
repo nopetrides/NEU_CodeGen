@@ -9,8 +9,8 @@
                 <ui:VisualElement name="right-character" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: none; -unity-background-scale-mode: scale-to-fit;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="DialoguePanel" style="flex-grow: 1;">
-            <ui:VisualElement name="NPCSubtitlePanel" class="panelBackground" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.8); position: absolute; width: 100%; bottom: 0; right: 0; left: 0; height: 30%; padding: 10px; display: none;">
+        <ui:VisualElement name="DialoguePanel" style="flex-grow: 1; flex-direction: row; align-items: flex-end; justify-content: space-evenly; align-content: stretch; align-self: stretch;">
+            <ui:VisualElement name="NPCSubtitlePanel" class="panelBackground" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.8); position: relative; width: 100%; bottom: 0; right: 0; left: 0; height: 30%; padding: 10px; display: none;">
                 <ui:VisualElement name="NPCPortraitContainer" style="flex-grow: 1; align-self: flex-start; width: 100px; height: 100px;">
                     <ui:VisualElement name="NPCPortraitImage" style="flex-grow: 1; background-image: none; -unity-background-scale-mode: scale-to-fit;" />
                     <ui:Label text="Name" name="NPCPortraitLabel" class="subtitleText" style="-unity-font-style: bold; font-size: 48px;" />
@@ -18,7 +18,7 @@
                 <ui:Label text="Subtitle" name="NPCSubtitleLabel" class="subtitleText" style="white-space: normal; flex-grow: 1; font-size: 36px;" />
                 <ui:Button text="Continue" name="NPCContinueButton" class="subtitleButton dialogue-option" />
             </ui:VisualElement>
-            <ui:VisualElement name="PCSubtitlePanel" class="panelBackground" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.8); position: absolute; width: 100%; bottom: 0; right: 0; left: 0; height: 30%; padding: 10px; display: none;">
+            <ui:VisualElement name="PCSubtitlePanel" class="panelBackground" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.8); position: relative; width: 100%; bottom: 0; right: 0; left: 0; height: 30%; padding: 10px; display: none;">
                 <ui:VisualElement name="PCPortraitContainer" style="flex-grow: 1; align-self: flex-start; width: 100px; height: 100px;">
                     <ui:VisualElement name="PCPortraitImage" style="flex-grow: 1; background-image: none; -unity-background-scale-mode: scale-to-fit;" />
                     <ui:Label text="Name" name="PCPortraitLabel" class="subtitleText" style="-unity-font-style: bold; font-size: 48px;" />
@@ -26,7 +26,7 @@
                 <ui:Label text="Subtitle" name="PCSubtitleLabel" class="subtitleText" style="white-space: normal; flex-grow: 1; font-size: 36px;" />
                 <ui:Button text="Continue" name="PCContinueButton" class="subtitleButton dialogue-option" />
             </ui:VisualElement>
-            <ui:VisualElement name="ResponseMenuPanel" class="panelBackground" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.8); position: absolute; width: 100%; bottom: 0; right: 0; left: 0; height: 30%; padding: 10px; flex-direction: row;">
+            <ui:VisualElement name="ResponseMenuPanel" class="panelBackground" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.8); position: absolute; width: 0%; bottom: 0; right: 0; left: 0; height: 0%; padding: 10px; flex-direction: row;">
                 <ui:VisualElement name="text-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 70%;">
                     <ui:ProgressBar name="TimerProgressBar" high-value="1" class="timer" />
                     <ui:VisualElement name="MenuPortraitContainer" style="flex-grow: 1; align-self: flex-start; width: 100px; height: 100px;">
@@ -34,13 +34,13 @@
                         <ui:Label text="Name" name="MenuPortraitLabel" class="subtitleText" style="-unity-font-style: bold; font-size: 48px; -unity-text-align: middle-left;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="options-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 30%; justify-content: center; right: 0; bottom: 0; left: auto; top: auto; background-position-y: center 0; background-position-x: center 0; transform-origin: right bottom; position: absolute; -unity-text-align: middle-center;">
-                    <ui:Button text="Option 1" display-tooltip-when-elided="true" name="ResponseButton0" class="dialogue-option responseButton" />
-                    <ui:Button text="Option 2" display-tooltip-when-elided="true" name="ResponseButton1" class="dialogue-option responseButton" />
-                    <ui:Button text="Option 3" display-tooltip-when-elided="true" name="ResponseButton2" class="dialogue-option responseButton" />
-                    <ui:Button text="Option 4" display-tooltip-when-elided="true" name="ResponseButton3" class="dialogue-option responseButton" />
-                    <ui:Button text="Option 5" display-tooltip-when-elided="true" name="ResponseButton4" class="dialogue-option responseButton" />
-                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="options-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.8); width: 30%; justify-content: space-evenly; right: 0; bottom: 0; left: auto; top: auto; background-position-y: center 0; background-position-x: center 0; transform-origin: right bottom; position: relative; -unity-text-align: middle-center; align-items: flex-end; align-self: auto; align-content: stretch;">
+                <ui:Button text="Option 1" display-tooltip-when-elided="true" name="ResponseButton0" class="dialogue-option responseButton" />
+                <ui:Button text="Option 2" display-tooltip-when-elided="true" name="ResponseButton1" class="dialogue-option responseButton" />
+                <ui:Button text="Option 3" display-tooltip-when-elided="true" name="ResponseButton2" class="dialogue-option responseButton" />
+                <ui:Button text="Option 4" display-tooltip-when-elided="true" name="ResponseButton3" class="dialogue-option responseButton" />
+                <ui:Button text="Option 5" display-tooltip-when-elided="true" name="ResponseButton4" class="dialogue-option responseButton" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

@@ -180,8 +180,24 @@ namespace PixelCrushers.DialogueSystem
                     _isPCResponseMenuNext = isPCResponseMenuNext;
                     _isPCAutoResponseNext = isPCAutoResponseNext;
 
-                    SetupContinueButton(subtitle, isPCResponseMenuNext, isPCAutoResponseNext);
+                    // If there are responses coming up, don't wait for continue button
+                    // This allows responses to show immediately while keeping the subtitle active
+                    if (isPCResponseMenuNext)
+                    {
+                        waitForContinue = false;
 
+                        // Immediately get the next state with responses from the controller
+                        if (FinishedSubtitleHandler != null)
+                        {
+                            // This will trigger OnFinishedSubtitle in ConversationController
+                            // which will then call StartResponses with the appropriate responses
+                            FinishedSubtitleHandler(this, EventArgs.Empty);
+                        }
+                    }
+                    else
+                    {
+                        SetupContinueButton(subtitle, isPCResponseMenuNext, isPCAutoResponseNext);
+                    }
                 }
                 else
                 {
@@ -440,7 +456,14 @@ namespace PixelCrushers.DialogueSystem
             if (!waitForContinue)
             {
                 if (m_sequencer != null) m_sequencer.Stop();
-                ui.HideSubtitle(lastSubtitle);
+
+                // Don't hide the subtitle if we're about to show responses
+                // This allows the subtitle to remain visible when showing responses
+                if (!_isPCResponseMenuNext)
+                {
+                    ui.HideSubtitle(lastSubtitle);
+                }
+
                 if (notifyOnFinishSubtitle)
                 {
                     notifyOnFinishSubtitle = false;

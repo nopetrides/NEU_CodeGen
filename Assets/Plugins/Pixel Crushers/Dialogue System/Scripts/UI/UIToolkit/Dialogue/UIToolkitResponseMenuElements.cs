@@ -18,6 +18,8 @@ namespace PixelCrushers.DialogueSystem.UIToolkit
 
         [Tooltip("Container panel for response menu.")]
         [SerializeField] private string responseMenuPanelName;
+        [Tooltip("Text container element to hide when showing both subtitle and responses.")]
+        [SerializeField] private string textContainerName = "ResponseMenuPanel";
         [Tooltip("Progress bar for optional timer. Value range should be 0-1.")]
         [SerializeField] private string timerProgressBarName;
         [Tooltip("Optional player portrait name.")]
@@ -30,6 +32,7 @@ namespace PixelCrushers.DialogueSystem.UIToolkit
         protected UIDocument Document { get; set; }
         public override AbstractUISubtitleControls subtitleReminderControls => null;
         protected VisualElement ResponseMenuPanel => UIToolkitDialogueUI.GetVisualElement<VisualElement>(Document, responseMenuPanelName);
+        protected VisualElement TextContainer => UIToolkitDialogueUI.GetVisualElement<VisualElement>(Document, textContainerName);
         protected ProgressBar TimerProgressBar => UIToolkitDialogueUI.GetVisualElement<ProgressBar>(Document, timerProgressBarName);
         protected Label PortraitLabel => UIToolkitDialogueUI.GetVisualElement<Label>(Document, portraitLabelName);
         protected VisualElement PortraitImage => UIToolkitDialogueUI.GetVisualElement<VisualElement>(Document, portraitImageName);
@@ -38,6 +41,7 @@ namespace PixelCrushers.DialogueSystem.UIToolkit
         protected float TimerSecondsMax { get; set; }
         protected float TimerSecondsLeft { get;set; }
         protected System.Action<object> ClickedResponseAction { get; set; }
+        protected bool IsShowingWithSubtitle { get; set; }
 
         protected Dictionary<int, Response> ResponsesByButtonIndex = new Dictionary<int, Response>();
 
@@ -62,6 +66,21 @@ namespace PixelCrushers.DialogueSystem.UIToolkit
         {
             UIToolkitDialogueUI.SetDisplay(ResponseMenuPanel, value);
             UIToolkitDialogueUI.SetDisplay(TimerProgressBar, false);
+
+            // If we're hiding the panel or showing it without a subtitle, show the text-container
+            if (!value || !IsShowingWithSubtitle)
+            {
+                if (TextContainer != null)
+                {
+                    UIToolkitDialogueUI.SetDisplay(TextContainer, true);
+                }
+            }
+
+            // Reset the flag if we're hiding the panel
+            if (!value)
+            {
+                IsShowingWithSubtitle = false;
+            }
         }
 
         public override void SetPCPortrait(Sprite sprite, string portraitName)
@@ -90,6 +109,16 @@ namespace PixelCrushers.DialogueSystem.UIToolkit
             {
                 ClearResponseButtons();
                 SetResponseButtons(responses, target);
+
+                // Check if we're showing both subtitle and responses simultaneously
+                IsShowingWithSubtitle = subtitle != null && !string.IsNullOrEmpty(subtitle.formattedText.text);
+
+                // Hide the text-container if we're showing both subtitle and responses simultaneously
+                if (IsShowingWithSubtitle && TextContainer != null)
+                {
+                    UIToolkitDialogueUI.SetDisplay(TextContainer, false);
+                }
+
                 Show();
             }
             else

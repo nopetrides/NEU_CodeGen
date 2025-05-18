@@ -719,7 +719,8 @@ MonoBehaviour:
     responseMenuElements:
       buttonAlignment: 0
       showUnusedButtons: 0
-      responseMenuPanelName: ResponseMenuPanel
+      responseMenuPanelName: options-container
+      textContainerName: ResponseMenuPanel
       timerProgressBarName: TimerProgressBar
       portraitLabelName: MenuPortraitLabel
       portraitImageName: MenuPortraitImage
