@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 968626924}
     - target: {fileID: 114937748117785014, guid: d4353500a4689e444a5a0ed100a259e5, type: 3}
       propertyPath: displaySettings.subtitleSettings.continueButton
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114937748117785014, guid: d4353500a4689e444a5a0ed100a259e5, type: 3}
       propertyPath: displaySettings.subtitleSettings.allowPCSubtitleReminders
@@ -720,7 +720,6 @@ MonoBehaviour:
       buttonAlignment: 0
       showUnusedButtons: 0
       responseMenuPanelName: options-container
-      textContainerName: ResponseMenuPanel
       timerProgressBarName: TimerProgressBar
       portraitLabelName: MenuPortraitLabel
       portraitImageName: MenuPortraitImage
