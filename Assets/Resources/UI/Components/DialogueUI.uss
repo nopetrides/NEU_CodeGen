@@ -1,0 +1,64 @@
+.dialogue-option {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: rgba(50, 50, 50, 0.8);
+    border-width: 1px;
+    border-color: rgb(100, 100, 100);
+    color: rgb(255, 255, 255);
+    transition-duration: 0.2s;
+}
+
+.dialogue-option:hover {
+    background-color: rgba(80, 80, 80, 0.8);
+    border-color: rgb(150, 150, 150);
+    scale: 1.05;
+}
+
+.dialogue-option:active {
+    background-color: rgba(100, 100, 100, 0.8);
+    border-color: rgb(200, 200, 200);
+    scale: 0.95;
+}
+
+#dialogue-box-container {
+    border-top-width: 2px;
+    border-color: rgb(100, 100, 100);
+    border-radius: 5px;
+}
+
+#speaker-name {
+    margin-bottom: 5px;
+    color: rgb(255, 255, 255);
+    font-size: 48px;
+}
+
+#dialogue-text {
+    font-size: 36px;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    white-space: nowrap;
+}
+
+#options-container {
+    padding-left: 10px;
+    font-size: 36px;
+}
+
+#controls-container {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    height: 30px;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+#auto-play-button {
+    width: 60px;
+    margin-right: 10px;
+}
+
+#skip-all-button {
+    width: 60px;
+}

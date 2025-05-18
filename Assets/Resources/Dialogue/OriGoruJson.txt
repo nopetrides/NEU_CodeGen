@@ -1,0 +1,254 @@
+﻿{
+  "passages": [
+    {
+      "text": "You stand atop the tallest mountain, exhausted after your long ascent. Stormclouds churn above. You see no sign of the storm god Goru. Nor do you hear him. After all, he does not speak. A wide bowl rests on flat stone, waiting.\n\n[[Toss a stone at the storm.|Stone]]\n[[Place a berry in the bowl.|Berry]]\n[[Cry out to Goru.|Shout]]",
+      "links": [
+        {
+          "name": "Toss a stone at the storm.|Stone",
+          "link": "Toss a stone at the storm.|Stone",
+          "broken": true
+        },
+        {
+          "name": "Place a berry in the bowl.|Berry",
+          "link": "Place a berry in the bowl.|Berry",
+          "broken": true
+        },
+        {
+          "name": "Cry out to Goru.|Shout",
+          "link": "Cry out to Goru.|Shout",
+          "broken": true
+        }
+      ],
+      "name": "Start",
+      "pid": "1",
+      "position": {
+        "x": "100",
+        "y": "0"
+      },
+      "tags": [
+        "Start"
+      ]
+    },
+    {
+      "text": "(set: $firstChoice to \"Stone\")\n\n(go-to:\"SecondChoices\")",
+      "name": "Stone",
+      "pid": "2",
+      "position": {
+        "x": "400",
+        "y": "200"
+      },
+      "tags": [
+        "Mid"
+      ]
+    },
+    {
+      "text": "(set: $firstChoice to \"Berry\")\n\n(go-to:\"SecondChoices\")",
+      "name": "Berry",
+      "pid": "3",
+      "position": {
+        "x": "600",
+        "y": "200"
+      },
+      "tags": [
+        "Pos"
+      ]
+    },
+    {
+      "text": "(set: $firstChoice to \"Shout\")\n\n(go-to:\"SecondChoices\")",
+      "name": "Shout",
+      "pid": "4",
+      "position": {
+        "x": "200",
+        "y": "200"
+      },
+      "tags": [
+        "Neg"
+      ]
+    },
+    {
+      "text": "(if: $firstChoice is \"Berry\")[\nYou place a tear-shaped berry in the bowl. The storm hushes slightly. The wind whistles low, like a breath drawn in.\n]\n(else-if: $firstChoice is \"Stone\")[\nYou throw a rock at the sky. The wind screams louder. Lightning splits the clouds — but only for a moment.\n]\n(else:)[\n\"Goru! I bear a relic. Will you not answer me?\"\n\nA crack of thunder, neither angry nor kind.\n]\nStill no god appears. But the air is different now — heavier. Watching.\n\nChoose carefully.\n\n\n[[Offer the relic directly.|OfferRelic]]\n[[Hurl the relic into the storm.|DestroyRelic]]\n[[Sit in silence beside the bowl.|Restraint]]",
+      "links": [
+        {
+          "name": "Offer the relic directly.|OfferRelic",
+          "link": "Offer the relic directly.|OfferRelic",
+          "broken": true
+        },
+        {
+          "name": "Hurl the relic into the storm.|DestroyRelic",
+          "link": "Hurl the relic into the storm.|DestroyRelic",
+          "broken": true
+        },
+        {
+          "name": "Sit in silence beside the bowl.|Restraint",
+          "link": "Sit in silence beside the bowl.|Restraint",
+          "broken": true
+        }
+      ],
+      "name": "SecondChoices",
+      "pid": "5",
+      "position": {
+        "x": "600",
+        "y": "400"
+      }
+    },
+    {
+      "text": "(set: $secondChoice to \"OfferRelic\")\nYou lift the relic high. \"Take this. It is too dangerous to leave below.\"\n\nThe clouds rumble. Lightning dances at your feet — but does not strike.\n\n[[Continue...|Reveal]]",
+      "links": [
+        {
+          "name": "Continue...|Reveal",
+          "link": "Continue...|Reveal",
+          "broken": true
+        }
+      ],
+      "name": "OfferRelic",
+      "pid": "6",
+      "position": {
+        "x": "800",
+        "y": "600"
+      },
+      "tags": [
+        "Mid"
+      ]
+    },
+    {
+      "text": "(set: $secondChoice to \"DestroyRelic\")\nYou throw the relic into the storm. It vanishes mid-air, swallowed whole.\n\nThe wind rises violently. The offering bowl shatters.\n\n[[Continue...|Reveal]]",
+      "links": [
+        {
+          "name": "Continue...|Reveal",
+          "link": "Continue...|Reveal",
+          "broken": true
+        }
+      ],
+      "name": "DestroyRelic",
+      "pid": "7",
+      "position": {
+        "x": "600",
+        "y": "600"
+      },
+      "tags": [
+        "Neg"
+      ]
+    },
+    {
+      "text": "(set: $secondChoice to \"Restraint\")\nYou sit. You say nothing. You do nothing. The relic rests by your side. The storm turns above you.\n\nNo flash. No sound. Just... calm.\n\n[[Continue...|Reveal]]",
+      "links": [
+        {
+          "name": "Continue...|Reveal",
+          "link": "Continue...|Reveal",
+          "broken": true
+        }
+      ],
+      "name": "Restraint",
+      "pid": "8",
+      "position": {
+        "x": "1000",
+        "y": "600"
+      },
+      "tags": [
+        "Pos"
+      ]
+    },
+    {
+      "text": "(if: $firstChoice is \"Stone\" and $secondChoice is \"Restraint\")[\n\"You threw rocks. You shouted. You flailed. And then what? You waited.\"\n\"In restraint, there is wisdom. In silence, strength. I have watched long enough.\"\n[[Receive the Storm’s Blessing|Blessed]]\n]\n(else-if: $firstChoice is \"Berry\" and $secondChoice is \"Restraint\")[\n\"You offered sweetness… then offered nothing more.\"\n\"The patience of those who give is rare. I accept this.\"\n[[Receive the Storm’s Blessing|Blessed]]\n]\n(else-if: $firstChoice is \"Shout\" and $secondChoice is \"Restraint\")[\n\"You demanded answers. You demanded attention.\"\n\"In the end, you realized one cannot make demands from the wind.\"\n[[Receive the Storm’s Blessing|Blessed]]\n]\n(else-if: $firstChoice is \"Stone\" and $secondChoice is \"OfferRelic\")[\n\"You threw your fury skyward, then begged forgiveness.\"\n\"The storm is not so easily swayed.\"\n[[Punishment|Cursed]]\n]\n(else-if: $firstChoice is \"Berry\" and $secondChoice is \"OfferRelic\")[\n\"You gave. Then gave again. What remains of you now?\"\n\"Beware those who offer everything. Even storms grow suspicious.\"\n[[MixedOutcome|Mixed]]\n]\n(else-if: $firstChoice is \"Shout\" and $secondChoice is \"OfferRelic\")[\n\"You called out boldly. You offered boldly. Loud hands and louder heart.\"\n\"A god cannot help but listen.\"\n[[Receive the Storm’s Blessing|Blessed]]\n]\n(else-if: $firstChoice is \"Stone\" and $secondChoice is \"DestroyRelic\")[\n\"Destruction first. Destruction last. You know only wrath.\"\n\"Let the wind erase your name.\"\n[[Punishment|Cursed]]\n]\n(else-if: $firstChoice is \"Berry\" and $secondChoice is \"DestroyRelic\")[\n\"You offered in peace. Then forced your burden upon another. A gift followed by violence.\"\n\"You will be remembered as a whisper of indecision.\"\n[[Punishment|Cursed]]\n]\n(else-if: $firstChoice is \"Shout\" and $secondChoice is \"DestroyRelic\")[\n\"You cried out for attention, then threw away what brought you here.\"\n\"The storm heard you. And now it turns away.\"\n[[Punishment|Cursed]]\n]\n(else:)[\n\"You have walked a path unrecorded. That alone is worthy.\"\n[[Receive the Storm’s Blessing|Blessed]]\n]",
+      "links": [
+        {
+          "name": "Receive the Storm’s Blessing|Blessed",
+          "link": "Receive the Storm’s Blessing|Blessed",
+          "broken": true
+        },
+        {
+          "name": "Receive the Storm’s Blessing|Blessed",
+          "link": "Receive the Storm’s Blessing|Blessed",
+          "broken": true
+        },
+        {
+          "name": "Receive the Storm’s Blessing|Blessed",
+          "link": "Receive the Storm’s Blessing|Blessed",
+          "broken": true
+        },
+        {
+          "name": "Punishment|Cursed",
+          "link": "Punishment|Cursed",
+          "broken": true
+        },
+        {
+          "name": "MixedOutcome|Mixed",
+          "link": "MixedOutcome|Mixed",
+          "broken": true
+        },
+        {
+          "name": "Receive the Storm’s Blessing|Blessed",
+          "link": "Receive the Storm’s Blessing|Blessed",
+          "broken": true
+        },
+        {
+          "name": "Punishment|Cursed",
+          "link": "Punishment|Cursed",
+          "broken": true
+        },
+        {
+          "name": "Punishment|Cursed",
+          "link": "Punishment|Cursed",
+          "broken": true
+        },
+        {
+          "name": "Punishment|Cursed",
+          "link": "Punishment|Cursed",
+          "broken": true
+        },
+        {
+          "name": "Receive the Storm’s Blessing|Blessed",
+          "link": "Receive the Storm’s Blessing|Blessed",
+          "broken": true
+        }
+      ],
+      "name": "Reveal",
+      "pid": "9",
+      "position": {
+        "x": "1000",
+        "y": "800"
+      }
+    },
+    {
+      "text": "The storm surrounds you. The relic glows softly. The wind wraps around your shoulders like a cloak.\n\nYou will descend with Goru’s favor. The storm watches with pride.",
+      "name": "Blessed",
+      "pid": "10",
+      "position": {
+        "x": "1400",
+        "y": "1000"
+      },
+      "tags": [
+        "Pos"
+      ]
+    },
+    {
+      "text": "The clouds coil away. You are alone.\n\nWhen you descend, you find your name has been forgotten. Your people do not know you. The relic is gone. The storm has erased you.",
+      "name": "Cursed",
+      "pid": "11",
+      "position": {
+        "x": "1000",
+        "y": "1000"
+      },
+      "tags": [
+        "Neg"
+      ]
+    },
+    {
+      "text": "Your climb is remembered, your name spoken — but your path debated.\n\nSome call you wise, others foolish. The wind remembers, but it whispers, not shouts.",
+      "name": "Mixed",
+      "pid": "12",
+      "position": {
+        "x": "1200",
+        "y": "1000"
+      },
+      "tags": [
+        "Mid"
+      ]
+    }
+  ],
+  "name": "v3",
+  "startnode": "1",
+  "creator": "Twine",
+  "creator-version": "2.10.0",
+  "ifid": "676B7EC3-5DC3-4A10-985B-B5BB1F63D312"
+}

@@ -1,0 +1,7 @@
+<engine:UXML xmlns:ui="UnityEngine.UIElements" xmlns:engine="UnityEngine.UIElements">
+    <Style src="./USS_MainMenu.uss" />
+    <ui:VisualElement class="main-menu">
+        <ui:Button name="play-button" text="Play" />
+        <ui:Button name="quit-button" text="Quit" />
+    </ui:VisualElement>
+</engine:UXML>

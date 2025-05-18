@@ -1,0 +1,163 @@
+:: StoryTitle
+v3
+
+
+:: StoryData
+{
+  "ifid": "676B7EC3-5DC3-4A10-985B-B5BB1F63D312",
+  "format": "Twison",
+  "format-version": "0.0.1",
+  "start": "Start",
+  "tag-colors": {
+    "Start": "blue",
+    "Pos": "green",
+    "Neg": "red",
+    "Mid": "yellow"
+  },
+  "zoom": 1
+}
+
+
+:: Berry [Pos] {"position":"600,200","size":"100,100"}
+(set: $firstChoice to "Berry")
+
+(go-to:"SecondChoices")
+
+
+:: Blessed [Pos] {"position":"1400,1000","size":"100,100"}
+The storm surrounds you. The relic glows softly. The wind wraps around your shoulders like a cloak.
+
+You will descend with Goru’s favor. The storm watches with pride.
+
+
+:: Cursed [Neg] {"position":"1000,1000","size":"100,100"}
+The clouds coil away. You are alone.
+
+When you descend, you find your name has been forgotten. Your people do not know you. The relic is gone. The storm has erased you.
+
+
+:: DestroyRelic [Neg] {"position":"600,600","size":"100,100"}
+(set: $secondChoice to "DestroyRelic")
+You throw the relic into the storm. It vanishes mid-air, swallowed whole.
+
+The wind rises violently. The offering bowl shatters.
+
+[[Continue...|Reveal]]
+
+
+:: Mixed [Mid] {"position":"1200,1000","size":"100,100"}
+Your climb is remembered, your name spoken — but your path debated.
+
+Some call you wise, others foolish. The wind remembers, but it whispers, not shouts.
+
+
+:: OfferRelic [Mid] {"position":"800,600","size":"100,100"}
+(set: $secondChoice to "OfferRelic")
+You lift the relic high. "Take this. It is too dangerous to leave below."
+
+The clouds rumble. Lightning dances at your feet — but does not strike.
+
+[[Continue...|Reveal]]
+
+
+:: Restraint [Pos] {"position":"1000,600","size":"100,100"}
+(set: $secondChoice to "Restraint")
+You sit. You say nothing. You do nothing. The relic rests by your side. The storm turns above you.
+
+No flash. No sound. Just... calm.
+
+[[Continue...|Reveal]]
+
+
+:: Reveal {"position":"1000,800","size":"100,100"}
+(if: $firstChoice is "Stone" and $secondChoice is "Restraint")[
+"You threw rocks. You shouted. You flailed. And then what? You waited."
+"In restraint, there is wisdom. In silence, strength. I have watched long enough."
+[[Receive the Storm’s Blessing|Blessed]]
+]
+(else-if: $firstChoice is "Berry" and $secondChoice is "Restraint")[
+"You offered sweetness… then offered nothing more."
+"The patience of those who give is rare. I accept this."
+[[Receive the Storm’s Blessing|Blessed]]
+]
+(else-if: $firstChoice is "Shout" and $secondChoice is "Restraint")[
+"You demanded answers. You demanded attention."
+"In the end, you realized one cannot make demands from the wind."
+[[Receive the Storm’s Blessing|Blessed]]
+]
+(else-if: $firstChoice is "Stone" and $secondChoice is "OfferRelic")[
+"You threw your fury skyward, then begged forgiveness."
+"The storm is not so easily swayed."
+[[Punishment|Cursed]]
+]
+(else-if: $firstChoice is "Berry" and $secondChoice is "OfferRelic")[
+"You gave. Then gave again. What remains of you now?"
+"Beware those who offer everything. Even storms grow suspicious."
+[[MixedOutcome|Mixed]]
+]
+(else-if: $firstChoice is "Shout" and $secondChoice is "OfferRelic")[
+"You called out boldly. You offered boldly. Loud hands and louder heart."
+"A god cannot help but listen."
+[[Receive the Storm’s Blessing|Blessed]]
+]
+(else-if: $firstChoice is "Stone" and $secondChoice is "DestroyRelic")[
+"Destruction first. Destruction last. You know only wrath."
+"Let the wind erase your name."
+[[Punishment|Cursed]]
+]
+(else-if: $firstChoice is "Berry" and $secondChoice is "DestroyRelic")[
+"You offered in peace. Then forced your burden upon another. A gift followed by violence."
+"You will be remembered as a whisper of indecision."
+[[Punishment|Cursed]]
+]
+(else-if: $firstChoice is "Shout" and $secondChoice is "DestroyRelic")[
+"You cried out for attention, then threw away what brought you here."
+"The storm heard you. And now it turns away."
+[[Punishment|Cursed]]
+]
+(else:)[
+"You have walked a path unrecorded. That alone is worthy."
+[[Receive the Storm’s Blessing|Blessed]]
+]
+
+
+:: SecondChoices {"position":"600,400","size":"100,100"}
+(if: $firstChoice is "Berry")[
+You place a tear-shaped berry in the bowl. The storm hushes slightly. The wind whistles low, like a breath drawn in.
+]
+(else-if: $firstChoice is "Stone")[
+You throw a rock at the sky. The wind screams louder. Lightning splits the clouds — but only for a moment.
+]
+(else:)[
+"Goru! I bear a relic. Will you not answer me?"
+
+A crack of thunder, neither angry nor kind.
+]
+Still no god appears. But the air is different now — heavier. Watching.
+
+Choose carefully.
+
+
+[[Offer the relic directly.|OfferRelic]]
+[[Hurl the relic into the storm.|DestroyRelic]]
+[[Sit in silence beside the bowl.|Restraint]]
+
+
+:: Shout [Neg] {"position":"200,200","size":"100,100"}
+(set: $firstChoice to "Shout")
+
+(go-to:"SecondChoices")
+
+
+:: Start [Start] {"position":"100,0","size":"100,100"}
+You stand atop the tallest mountain, exhausted after your long ascent. Stormclouds churn above. You see no sign of the storm god Goru. Nor do you hear him. After all, he does not speak. A wide bowl rests on flat stone, waiting.
+
+[[Toss a stone at the storm.|Stone]]
+[[Place a berry in the bowl.|Berry]]
+[[Cry out to Goru.|Shout]]
+
+
+:: Stone [Mid] {"position":"400,200","size":"100,100"}
+(set: $firstChoice to "Stone")
+
+(go-to:"SecondChoices")

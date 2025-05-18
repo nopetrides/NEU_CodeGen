@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xmlns="UnityEngine.UIElements" 
+      xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+      xsi:schemaLocation="UnityEngine.UIElements ../../../UIElementsSchema/UnityEngine.UIElements.xsd">
+    
+    <VisualElement name="dialogue-container" class="dialogue-container">
+        <VisualElement name="dialogue-panel" class="dialogue-panel">
+            <Label name="speaker-name" class="speaker-name" text="Speaker" />
+            <Label name="dialogue-text" class="dialogue-text" text="Dialogue text goes here..." />
+            <VisualElement name="response-container" class="response-container">
+                <!-- Response buttons will be added dynamically -->
+            </VisualElement>
+        </VisualElement>
+    </VisualElement>
+</UXML> 

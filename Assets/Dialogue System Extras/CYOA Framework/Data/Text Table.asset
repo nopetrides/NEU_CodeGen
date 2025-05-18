@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749122ca687073649af3faaf57ce2dd5, type: 3}
+  m_Name: Text Table
+  m_EditorClassIdentifier: 
+  m_languageKeys:
+  - Default
+  - fr
+  m_languageValues: 0000000001000000
+  m_fieldKeys: 010000000c00000009000000020000000d0000000300000004000000050000000600000007000000080000000a0000000b000000
+  m_fieldValues:
+  - m_fieldName: Continue
+    m_keys: 0000000001000000
+    m_values:
+    - Continue
+    - Continuer
+  - m_fieldName: OK
+    m_keys: 0000000001000000
+    m_values:
+    - OK
+    - OK
+  - m_fieldName: Cancel
+    m_keys: 0000000001000000
+    m_values:
+    - Cancel
+    - Annuler
+  - m_fieldName: Start from Beginning
+    m_keys: 0000000001000000
+    m_values:
+    - Start from Beginning
+    - "\xC0 partir de d\xE9but"
+  - m_fieldName: Restart
+    m_keys: 0000000001000000
+    m_values:
+    - Restart
+    - "Red\xE9marrer"
+  - m_fieldName: Language
+    m_keys: 0000000001000000
+    m_values:
+    - Language
+    - Langue
+  - m_fieldName: Quit Program
+    m_keys: 0000000001000000
+    m_values:
+    - Quit Program
+    - Quitter Programme
+  - m_fieldName: Quit to Title
+    m_keys: 0000000001000000
+    m_values:
+    - Quit to Title
+    - Quittez le Titre
+  - m_fieldName: Save
+    m_keys: 0000000001000000
+    m_values:
+    - Save
+    - Enregistrer
+  - m_fieldName: Game saved.
+    m_keys: 0000000001000000
+    m_values:
+    - Game saved.
+    - "Jeu sauv\xE9."
+  - m_fieldName: Start from the beginning?
+    m_keys: 0000000001000000
+    m_values:
+    - Start from the beginning?
+    - "Commen\xE7ons par le d\xE9but ?"
+  - m_fieldName: Default
+    m_keys: 0000000001000000
+    m_values:
+    - English
+    - Anglais
+  - m_fieldName: French
+    m_keys: 0000000001000000
+    m_values:
+    - French
+    - "Fran\xE7ais"
+  m_nextLanguageID: 2
+  m_nextFieldID: 14

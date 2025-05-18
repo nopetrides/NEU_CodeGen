@@ -1,0 +1,16 @@
+.main-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* horizontal center */
+    justify-content: center; /* vertical center */
+    height: 100%;
+    width: 100%;
+}
+
+Button {
+    width: 200px;
+    height: 60px;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,18 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Components/LoginForm.uss?fileID=7433441132597879392&amp;guid=62cdeeedffdb0c9428daf41bec2f2746&amp;type=3#LoginForm" />
+    <engine:VisualElement name="login-container" class="login-container">
+        <engine:Label name="title-label" text="Login" class="title" />
+        <engine:VisualElement name="username-container" class="input-container">
+            <engine:Label name="username-label" text="Username" />
+            <engine:TextField name="username-input" />
+        </engine:VisualElement>
+        <engine:VisualElement name="password-container" class="input-container">
+            <engine:Label name="password-label" text="Password" />
+            <engine:TextField name="password-input" password="true" />
+        </engine:VisualElement>
+        <engine:VisualElement name="buttons-container" class="buttons-container">
+            <engine:Button name="login-button" text="Login" class="primary-button" />
+            <engine:Button name="cancel-button" text="Cancel" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

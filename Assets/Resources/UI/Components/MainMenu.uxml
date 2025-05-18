@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xmlns="UnityEngine.UIElements" 
+      xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+      xsi:schemaLocation="UnityEngine.UIElements ../../../UIElementsSchema/UnityEngine.UIElements.xsd">
+    
+    <Style src="MainMenu.uss" />
+    
+    <VisualElement name="main-menu-container" class="main-menu">
+        <Label name="game-title" class="game-title" text="Game Name" />
+        
+        <VisualElement name="button-container" class="button-container">
+            <Button name="play-button" class="menu-button" text="Play" />
+            <Button name="settings-button" class="menu-button" text="Settings" />
+            <Button name="quit-button" class="menu-button" text="Quit" />
+        </VisualElement>
+    </VisualElement>
+    
+</UXML> 

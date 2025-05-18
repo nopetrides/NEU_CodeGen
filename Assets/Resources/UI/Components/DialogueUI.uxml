@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/Components/DialogueUI.uss?fileID=7433441132597879392&amp;guid=661535d4f6654849a013f42db4cad805&amp;type=3#DialogueUI" />
+    <ui:VisualElement name="dialogue-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:VisualElement name="characters-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; height: 100%; min-height: auto; max-height: none; position: absolute; top: 0; width: 100%; left: 0; right: 0; bottom: 0;">
+            <ui:VisualElement name="left-character-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 50%;">
+                <ui:VisualElement name="left-character" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: none; -unity-background-scale-mode: scale-to-fit;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="right-character-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 50%;">
+                <ui:VisualElement name="right-character" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: none; -unity-background-scale-mode: scale-to-fit;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="dialogue-box-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.8); height: 30%; flex-direction: row; padding: 10px; min-height: auto; max-height: none; position: absolute; width: 100%; bottom: 0; right: 0; left: 0; flex-basis: auto; align-self: auto; top: auto; flex-wrap: nowrap;">
+            <ui:VisualElement name="text-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 70%;">
+                <ui:Label text="Character Name" display-tooltip-when-elided="true" name="speaker-name" enabled="false" style="-unity-font-style: bold; width: 1334px; height: 69px;" />
+                <ui:Label text="Dialogue text goes here. This is where the character&apos;s dialogue will be displayed." display-tooltip-when-elided="true" name="dialogue-text" style="white-space: normal; flex-grow: 1;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="options-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 30%; justify-content: center;">
+                <ui:Button text="Option 1" display-tooltip-when-elided="true" name="option-1" class="dialogue-option" />
+                <ui:Button text="Option 2" display-tooltip-when-elided="true" name="option-2" class="dialogue-option" />
+                <ui:Button text="Option 3" display-tooltip-when-elided="true" name="option-3" class="dialogue-option" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,80 @@
+﻿{
+  "name": "Sample Twine Story",
+  "startnode": "1",
+  "passages": [
+    {
+      "pid": "1",
+      "name": "Start",
+      "text": "Welcome to the sample Twine story!\n\nThis is a demonstration of how Twine stories can be imported into the PixelCrusher Dialogue System.\n\n[[Continue to the next passage|Next]]\n[[Learn about formatting|Formatting]]",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "links": [
+        {
+          "name": "Next",
+          "link": "Next",
+          "pid": "2"
+        },
+        {
+          "name": "Formatting",
+          "link": "Formatting",
+          "pid": "3"
+        }
+      ]
+    },
+    {
+      "pid": "2",
+      "name": "Next",
+      "text": "NPC: This is the second passage. Notice how I've specified an actor at the beginning of the text.\n\nYou can use macros like (set: $visited to true) to set variables.\n\n[[Go back to start|Start]]\n[[Learn about sequences and conditions|Advanced]]",
+      "position": {
+        "x": 300,
+        "y": 100
+      },
+      "links": [
+        {
+          "name": "Start",
+          "link": "Start",
+          "pid": "1"
+        },
+        {
+          "name": "Advanced",
+          "link": "Advanced",
+          "pid": "4"
+        }
+      ]
+    },
+    {
+      "pid": "3",
+      "name": "Formatting",
+      "text": "You can use //italic// and ''bold'' formatting in your text.\n\nYou can also use [[(direct links)]] to link directly to another passage without an intermediate link entry.\n\n[[Go back to start|Start]]",
+      "position": {
+        "x": 100,
+        "y": 300
+      },
+      "links": [
+        {
+          "name": "Start",
+          "link": "Start",
+          "pid": "1"
+        }
+      ]
+    },
+    {
+      "pid": "4",
+      "name": "Advanced",
+      "text": "This passage demonstrates how to use sequences, conditions, scripts, and descriptions.\n\n[[Go back to start|Start]]\n\nSequence:\nAudioWait(hello);\nAnimatorPlay(wave)\n\nConditions:\nVariable[\"visited\"] == true\n\nScript:\nDebug.Log(\"Advanced passage visited\");\n\nDescription:\nThis passage is only accessible if the player has visited the second passage.",
+      "position": {
+        "x": 300,
+        "y": 300
+      },
+      "links": [
+        {
+          "name": "Start",
+          "link": "Start",
+          "pid": "1"
+        }
+      ]
+    }
+  ]
+}

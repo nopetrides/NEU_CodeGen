@@ -1,0 +1,75 @@
+﻿:: Start
+You stand atop the mountain. Stormclouds churn above. Goru does not speak. A wide bowl rests on flat stone, waiting.
+
+[[Toss a stone at the storm.|Stone]]
+[[Place a berry in the bowl.|Berry]]
+[[Cry out to Goru.|Shout]]
+
+:: Stone
+You throw a rock at the sky. The wind screams louder. Lightning splits the clouds — but only for a moment.
+
+[[Try something else.|SecondChoices]]
+
+:: Berry
+You place a tear-shaped berry in the bowl. The storm hushes slightly. The wind whistles low, like a breath drawn in.
+
+[[Try something else.|SecondChoices]]
+
+:: Shout
+"Goru! I bear a relic. Will you not answer me?"
+
+A crack of thunder, neither angry nor kind.
+
+[[Try something else.|SecondChoices]]
+
+:: SecondChoices
+Still no god appears. But the air is different now — heavier. Watching.
+
+Choose carefully.
+
+[[Offer the relic directly.|OfferRelic]]
+[[Hurl the relic into the storm.|DestroyRelic]]
+[[Sit in silence beside the bowl.|Restraint]]
+
+:: OfferRelic
+You lift the relic high. "Take this. It is too dangerous to leave below."
+
+The clouds rumble. Lightning dances at your feet — but does not strike.
+
+[[Continue...|Reveal]]
+
+:: DestroyRelic
+You throw the relic into the storm. It vanishes mid-air, swallowed whole.
+
+The wind rises violently. The offering bowl shatters.
+
+[[Continue...|Reveal]]
+
+:: Restraint
+You sit. You say nothing. You do nothing. The relic rests by your side. The storm turns above you.
+
+No flash. No sound. Just... calm.
+
+[[Continue...|Reveal]]
+
+:: Reveal
+The clouds descend in coils of wind. Goru's voice is like thunder in your spine.
+
+"You threw rocks. You shouted. You flailed. And then you waited."
+
+His shape becomes clear — a great serpent of cloud and crackling arcs, head descending slowly.
+
+"In restraint, there is wisdom. In silence, strength. I have watched long enough."
+
+[[Receive the Storm’s Blessing|Blessed]]
+[[Feel the Storm’s Wrath|Cursed]]
+
+:: Blessed
+The storm surrounds you. The relic glows softly. The wind wraps around your shoulders like a cloak.
+
+You will descend with Goru’s favor. The storm watches with pride.
+
+:: Cursed
+The clouds coil away. You are alone.
+
+When you descend, you find your name has been forgotten. Your people do not know you. The relic is gone. The storm has erased you.

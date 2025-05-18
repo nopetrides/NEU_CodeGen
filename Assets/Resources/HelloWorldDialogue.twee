@@ -1,0 +1,27 @@
+:: StoryTitle
+Hello World Dialogue
+
+:: StoryData
+{
+    "ifid": "12345678-1234-1234-1234-123456789012",
+    "format": "Harlowe 3.3.5",
+    "format-version": "3.3.5",
+    "start": "Start"
+}
+
+:: Start
+Hello! Welcome to our dialogue system.
+[[How are you?->Greeting]]
+[[Goodbye->End]]
+
+:: Greeting
+I'm doing great, thank you for asking! This is a simple example of how to use Twine with the Pixel Crushers Dialogue System.
+[[That's nice->End]]
+[[Tell me more->MoreInfo]]
+
+:: MoreInfo
+The Pixel Crushers Dialogue System is a powerful tool for creating interactive dialogue in Unity games. It supports various formats including Twine!
+[[Thanks for the info->End]]
+
+:: End
+Goodbye! Thanks for trying out our dialogue system. 
