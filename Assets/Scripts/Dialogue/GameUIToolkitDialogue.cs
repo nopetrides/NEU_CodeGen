@@ -1,16 +1,18 @@
 // Copyright (c) Pixel Crushers. All rights reserved.
 
 using System.Collections.Generic;
+using PixelCrushers.DialogueSystem;
 using UnityEngine;
 using UnityEngine.UIElements;
+using PixelCrushers.DialogueSystem.UIToolkit;
+using CharacterInfo = PixelCrushers.DialogueSystem.CharacterInfo;
 
-namespace PixelCrushers.DialogueSystem.UIToolkit
+namespace Core.Dialogue
 {
-
     /// <summary>
     /// Dialogue UI implementation for UI Toolkit.
     /// </summary>
-    public class UIToolkitDialogueUI : AbstractDialogueUI, IDialogueUI
+    public class GameUIToolkitDialogue : AbstractDialogueUI, IDialogueUI
     {
         [SerializeField] private UIToolkitRootElements rootElements;
         [SerializeField] private UIToolkitAlertElements alertElements;
@@ -31,7 +33,7 @@ namespace PixelCrushers.DialogueSystem.UIToolkit
         public override void Update()
         {
             base.Update();
-            (dialogueElements.responseMenuControls as UIToolkitResponseMenuElements).DoUpdate();
+            (dialogueElements.responseMenuControls as UIToolkitResponseMenuElements)?.DoUpdate();
         }
 
         public override void Open()
@@ -91,7 +93,7 @@ namespace PixelCrushers.DialogueSystem.UIToolkit
             return null;
         }
 
-        protected virtual void OpenSubtitlePanelsOnStart()
+        private void OpenSubtitlePanelsOnStart()
         {
             var conversation = DialogueManager.masterDatabase.GetConversation(DialogueManager.lastConversationStarted);
             if (conversation == null) return;
@@ -102,8 +104,13 @@ namespace PixelCrushers.DialogueSystem.UIToolkit
             var mainActorID = conversation.ActorID;
             var mainActor = DialogueManager.masterDatabase.GetActor(DialogueActor.GetActorName(DialogueManager.currentActor));
             if (mainActor != null) mainActorID = mainActor.id;
+			
+			var conversantID = conversation.ConversantID;
+			var conversant = DialogueManager.masterDatabase.GetActor(DialogueActor.GetActorName(DialogueManager.currentConversant));
+			if (conversant != null) conversantID = conversant.id;
+			
             CheckActorIDOnStartConversation(mainActorID, checkedActorIDs, checkedPanels);
-            CheckActorIDOnStartConversation(conversation.ConversantID, checkedActorIDs, checkedPanels);
+            CheckActorIDOnStartConversation(conversantID, checkedActorIDs, checkedPanels);
 
             // Check other actors:
             for (int i = 0; i < conversation.dialogueEntries.Count; i++)
@@ -120,18 +127,26 @@ namespace PixelCrushers.DialogueSystem.UIToolkit
             var actor = DialogueManager.MasterDatabase.GetActor(actorID);
             if (actor == null) return;
             var actorTransform = GetActorTransform(actor.Name);
-            DialogueActor dialogueActor;
+            DialogueActor dialogueActor = DialogueActor.GetDialogueActorComponent(actorTransform);
             var defaultPanel = actor.IsPlayer ? dialogueElements.PCSubtitleElements : dialogueElements.NPCSubtitleElements;
             var panel = GetActorTransformPanel(actorTransform, defaultPanel, out dialogueActor);
             if (panel == null && actorTransform == null && Debug.isDebugBuild) Debug.LogWarning("Dialogue System: Can't determine what subtitle panel to use for " + actor.Name, actorTransform);
             if (panel == null || checkedPanels.Contains(panel)) return;
             checkedPanels.Add(panel);
-            if (panel.Visibility == UIVisibility.AlwaysFromStart)
+
+			var actorName = CharacterInfo.GetLocalizedDisplayNameInDatabase(actor.Name);
+			
+			Sprite actorSpritePortrait = (dialogueActor && dialogueActor.GetPortraitSprite()) ?
+				dialogueActor.GetPortraitSprite() :
+				actor.GetPortraitSprite();
+				
+			if (actor.IsPlayer)
+			{
+				panel.SetActorPortraitSprite(actorName, actorSpritePortrait);
+			}
+			else if (panel.Visibility == UIVisibility.AlwaysFromStart)
             {
-                var actorPortrait = (dialogueActor != null && dialogueActor.GetPortraitSprite() != null) ?
-                    dialogueActor.GetPortraitSprite() : actor.GetPortraitSprite();
-                var actorName = CharacterInfo.GetLocalizedDisplayNameInDatabase(actor.Name);
-                panel.OpenOnStartConversation(actorPortrait, actorName, dialogueActor);
+                panel.OpenOnStartConversation(actorSpritePortrait, actorName, dialogueActor);
             }
         }
 

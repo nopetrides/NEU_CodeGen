@@ -144,21 +144,24 @@ namespace Core
 				color.value = c;
 				_bgParallaxDark.style.unityBackgroundImageTintColor = color;
 
+				void Unflash()
+				{
+					c.a = .5f;
+					color.value = c;
+					_bgParallaxDark.style.unityBackgroundImageTintColor = color;
+				}
 				// Schedule return to opaque after 100ms and 300ms
-				Root.schedule.Execute(() =>
+				Root.schedule.Execute(Unflash).StartingIn(100);
+				Root.schedule.Execute(Unflash).StartingIn(300);
+
+				void Flash()
 				{
 					c.a = .5f;
 					color.value = c;
 					_bgParallaxDark.style.unityBackgroundImageTintColor = color;
-				}).StartingIn(100).StartingIn(300);
-				
+				}
 				// Schedule return to opaque after 200ms
-				Root.schedule.Execute(() =>
-				{
-					c.a = .5f;
-					color.value = c;
-					_bgParallaxDark.style.unityBackgroundImageTintColor = color;
-				}).StartingIn(200);
+				Root.schedule.Execute(Flash).StartingIn(200);
 
 			}).Every(5000); // Repeat every 5 seconds
 

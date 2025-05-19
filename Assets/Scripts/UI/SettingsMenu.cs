@@ -12,6 +12,13 @@ namespace Core
         private Button _returnButton;
 
         // Audio settings
+		/// <summary>
+		/// 0-1 that gets saved
+		/// </summary>
+		private float _masterSliderNormalized = 0.75f;
+		/// <summary>
+		/// log value applied to listeners
+		/// </summary>
         private float _masterVolume = 0.75f;
         private bool _isMuted = false;
 
@@ -44,10 +51,10 @@ namespace Core
 
         private void OnVolumeChanged(ChangeEvent<float> evt)
         {
-			var normalizedVolume = evt.newValue;
+			_masterSliderNormalized = evt.newValue;
 			
-            _masterVolume = Mathf.Log10(normalizedVolume) * 40;
-            _volumeValue.text = $"{Mathf.RoundToInt(normalizedVolume * 100)}%";
+            _masterVolume = Mathf.Log10(_masterSliderNormalized) * 40;
+            _volumeValue.text = $"{Mathf.RoundToInt(_masterSliderNormalized * 100)}%";
             
             // Apply volume change
             ApplyAudioSettings();
@@ -85,14 +92,16 @@ namespace Core
         private void LoadAudioSettings()
         {
             // Load saved settings from PlayerPrefs
-            _masterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.75f);
+			
+			_masterSliderNormalized = PlayerPrefs.GetFloat("MasterVolume", 0.75f);
+			_masterVolume = Mathf.Log10(_masterSliderNormalized) * 40;
             _isMuted = PlayerPrefs.GetInt("MuteAudio", 0) == 1;
         }
 
         private void SaveAudioSettings()
         {
             // Save settings to PlayerPrefs
-            PlayerPrefs.SetFloat("MasterVolume", _masterVolume);
+            PlayerPrefs.SetFloat("MasterVolume", _masterSliderNormalized);
             PlayerPrefs.SetInt("MuteAudio", _isMuted ? 1 : 0);
             PlayerPrefs.Save();
         }
