@@ -23,6 +23,14 @@ namespace Core
 			dialogueGo.transform.SetParent(transform);
 			_dialogueAudioSource = dialogueGo.AddComponent<AudioSource>();
 			_dialogueAudioSource.playOnAwake = false;
+			
+			// Load saved settings from PlayerPrefs
+			var masterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.75f);
+			var isMuted = PlayerPrefs.GetInt("MuteAudio", 0) == 1;
+			// Apply audio settings to the game's audio system
+			float effectiveVolume = isMuted ? 0f : masterVolume;
+			// Set the master volume in the game's audio system
+			AudioListener.volume = Mathf.Pow(10.0f, effectiveVolume/40.0f);
 
 			// Load audio clips
 			LoadAudioClips();
@@ -169,7 +177,8 @@ namespace Core
 
 		public void PlayUISound(string soundName)
 		{
-			if (_audioClips.TryGetValue(soundName, out var clip) && clip != null)
+			if (_audioClips.TryGetValue(soundName, out var clip) && clip && 
+				_uiAudioSource.isPlaying == false || clip != _uiAudioSource.clip) // Don't overlap sounds
 			{
 				_uiAudioSource.PlayOneShot(clip);
 			}

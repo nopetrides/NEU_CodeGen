@@ -1,62 +1,70 @@
 .main-menu {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(10, 20, 35, 0.9);
+    background-image: url('project://database/Assets/UI/storm_clouds.png');
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.2);
     align-items: center;
     justify-content: center;
+    border-width: 4px;
+    border-color: rgba(0, 162, 232, 0.6);
 }
 
 .game-title {
-    font-size: 72px;
-    color: white;
+    font-size: 80px;
+    color: rgb(240, 250, 255);
     -unity-font-style: bold;
-    margin-bottom: 50px;
-    transition-duration: 0.2s;
-    transition-timing-function: ease-in-out;
-}
-
-.game-title.bounce {
-    scale: 1.2;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 60px;
+    letter-spacing: 4px;
+    -unity-font-definition: url("project://database/Assets/Plugins/Pixel%20Crushers/Dialogue%20System/Prefabs/Art/Fonts/Bitwise%20Font/bitwise.ttf?fileID=12800000&guid=5e9fd29b2ab3f8749945f6c3462cc0be&type=3#bitwise");
 }
 
 .button-container {
-    width: 300px;
+    width: 350px;
     align-items: center;
+    background-image: url('project://database/Assets/UI/rain_overlay.png');
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.15);
+    padding: 10px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: rgba(0, 162, 232, 0.4);
 }
 
 .menu-button {
-    width: 200px;
-    height: 50px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-width: 2px;
-    border-color: white;
-    border-radius: 25px;
-    color: white;
-    font-size: 24px;
-    transition-duration: 0.2s;
-    transition-timing-function: ease-in-out;
-    transition-property: background-color, border-color, color, opacity, scale;
+    width: 220px;
+    height: 60px;
+    background-color: rgba(50, 70, 100, 0.7);
+    border-width: 3px;
+    border-color: rgba(0, 162, 232, 0.6);
+    border-radius: 30px;
+    color: rgb(220, 240, 255);
+    -unity-font-style: bold;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.7);
     margin-top: 20px;
+    font-size: 36px;
+    -unity-font-definition: url("project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=189cb4f7762670e40bc922f491f9a1b2&type=3#NotInter-Regular");
 }
 
 .menu-button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-color: #4CAF50;
-    color: #4CAF50;
+    background-color: rgba(70, 100, 140, 0.8);
+    border-color: rgb(135, 206, 250);
+    color: rgb(135, 206, 250);
 }
 
 .menu-button:active {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-color: #45a049;
-    color: #45a049;
+    background-color: rgba(40, 60, 90, 0.9);
+    border-color: rgb(255, 215, 0);
+    color: rgb(255, 215, 0);
 }
 
 .menu-button:disabled {
-    opacity: 0.5;
-    background-color: rgba(255, 255, 255, 0.05);
+    opacity: 0.4;
+    background-color: rgba(50, 70, 100, 0.3);
     border-color: rgba(255, 255, 255, 0.3);
-    color: rgba(255, 255, 255, 0.3);
-    cursor: not-allowed;
-} 
+    color: rgba(200, 200, 200, 0.5);
+}

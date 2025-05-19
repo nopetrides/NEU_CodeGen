@@ -152,6 +152,22 @@ namespace Core
             return null;
         }
 
+        /// <summary>
+        /// Shows the main menu.
+        /// </summary>
+        public void ShowMainMenu()
+        {
+            Show<MainMenu>();
+        }
+
+        /// <summary>
+        /// Shows the settings menu.
+        /// </summary>
+        public void ShowSettingsMenu()
+        {
+            Show<SettingsMenu>();
+        }
+
         private void LoadUIResources<T>() where T : UIComponent
         {
             var type = typeof(T);
