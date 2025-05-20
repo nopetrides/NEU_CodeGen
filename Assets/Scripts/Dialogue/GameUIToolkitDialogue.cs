@@ -1,6 +1,5 @@
 // Copyright (c) Pixel Crushers. All rights reserved.
 
-using System.Collections.Generic;
 using PixelCrushers.DialogueSystem;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -15,14 +14,12 @@ namespace Core.Dialogue
     public class GameUIToolkitDialogue : AbstractDialogueUI, IDialogueUI
     {
         [SerializeField] private UIToolkitRootElements rootElements;
-        [SerializeField] private UIToolkitAlertElements alertElements;
-        [SerializeField] private UIToolkitDialogueElements dialogueElements;
-        [SerializeField] private UIToolkitQTEElements qteElements;
+        [SerializeField] private GameUIToolkitDialogueElements dialogueElements;
 
         public override AbstractUIRoot uiRootControls => rootElements;
         public override AbstractDialogueUIControls dialogueControls => dialogueElements;
-        public override AbstractUIQTEControls qteControls => qteElements;
-        public override AbstractUIAlertControls alertControls => alertElements;
+        public override AbstractUIQTEControls qteControls => null;
+        public override AbstractUIAlertControls alertControls => null;
 
         public override void Awake()
         {
@@ -58,18 +55,17 @@ namespace Core.Dialogue
             if (panel != null && !panel.ShouldStayVisible) panel.Hide();
         }
 
-        protected virtual UIToolkitSubtitleElements GetSubtitlePanel(int index)
-        {
-            return (0 <= index && index < dialogueElements.SubtitlePanelElements.Count)
-                ? dialogueElements.SubtitlePanelElements[index] : null;
+        protected virtual GameUIToolkitSubtitleElements GetSubtitlePanel()
+		{
+			return dialogueElements.SubtitlePanelElements;
         }
 
-        protected virtual UIToolkitSubtitleElements GetSubtitlePanel(Subtitle subtitle)
+        protected virtual GameUIToolkitSubtitleElements GetSubtitlePanel(Subtitle subtitle)
         {
             if (subtitle == null) return null;
 
             // Check for override via [panel=#] tag:
-            var panel = GetSubtitlePanel(subtitle.formattedText.subtitlePanelNumber);
+            var panel = GetSubtitlePanel();
             if (panel != null) return panel;
 
             // Check for override on speaker's DialogueActor component:
@@ -79,89 +75,27 @@ namespace Core.Dialogue
 
             // Otherwise choose standard panel:
             return subtitle.speakerInfo.isNPC
-                ? dialogueElements.npcSubtitleControls as UIToolkitSubtitleElements
-                : dialogueElements.pcSubtitleControls as UIToolkitSubtitleElements;
+                ? dialogueElements.npcSubtitleControls as GameUIToolkitSubtitleElements
+                : dialogueElements.pcSubtitleControls as GameUIToolkitSubtitleElements;
         }
 
-        protected virtual UIToolkitSubtitleElements GetDialogueActorSubtitlePanel(DialogueActor dialogueActor)
+        protected virtual GameUIToolkitSubtitleElements GetDialogueActorSubtitlePanel(DialogueActor dialogueActor)
         {
             if (dialogueActor != null && dialogueActor.standardDialogueUISettings.subtitlePanelNumber != SubtitlePanelNumber.Default)
             {
                 var index = PanelNumberUtility.GetSubtitlePanelIndex(dialogueActor.standardDialogueUISettings.subtitlePanelNumber);
-                return GetSubtitlePanel(index);
+                return GetSubtitlePanel();
             }
             return null;
         }
 
         private void OpenSubtitlePanelsOnStart()
         {
-            var conversation = DialogueManager.masterDatabase.GetConversation(DialogueManager.lastConversationStarted);
-            if (conversation == null) return;
-            HashSet<UIToolkitSubtitleElements> checkedPanels = new HashSet<UIToolkitSubtitleElements>();
-            HashSet<int> checkedActorIDs = new HashSet<int>();
-
-            // Check main Actor & Conversant:
-            var mainActorID = conversation.ActorID;
-            var mainActor = DialogueManager.masterDatabase.GetActor(DialogueActor.GetActorName(DialogueManager.currentActor));
-            if (mainActor != null) mainActorID = mainActor.id;
-			
-			var conversantID = conversation.ConversantID;
-			var conversant = DialogueManager.masterDatabase.GetActor(DialogueActor.GetActorName(DialogueManager.currentConversant));
-			if (conversant != null) conversantID = conversant.id;
-			
-            CheckActorIDOnStartConversation(mainActorID, checkedActorIDs, checkedPanels);
-            CheckActorIDOnStartConversation(conversantID, checkedActorIDs, checkedPanels);
-
-            // Check other actors:
-            for (int i = 0; i < conversation.dialogueEntries.Count; i++)
-            {
-                var actorID = conversation.dialogueEntries[i].ActorID;
-                CheckActorIDOnStartConversation(actorID, checkedActorIDs, checkedPanels);
-            }
+			var panel = GetSubtitlePanel();
+			panel.OpenOnStartConversation();
         }
-
-        protected virtual void CheckActorIDOnStartConversation(int actorID, HashSet<int> checkedActorIDs, HashSet<UIToolkitSubtitleElements> checkedPanels)
-        {
-            if (checkedActorIDs.Contains(actorID)) return;
-            checkedActorIDs.Add(actorID);
-            var actor = DialogueManager.MasterDatabase.GetActor(actorID);
-            if (actor == null) return;
-            var actorTransform = GetActorTransform(actor.Name);
-            DialogueActor dialogueActor = DialogueActor.GetDialogueActorComponent(actorTransform);
-            var defaultPanel = actor.IsPlayer ? dialogueElements.PCSubtitleElements : dialogueElements.NPCSubtitleElements;
-            var panel = GetActorTransformPanel(actorTransform, defaultPanel, out dialogueActor);
-            if (panel == null && actorTransform == null && Debug.isDebugBuild) Debug.LogWarning("Dialogue System: Can't determine what subtitle panel to use for " + actor.Name, actorTransform);
-            if (panel == null || checkedPanels.Contains(panel)) return;
-            checkedPanels.Add(panel);
-
-			var actorName = CharacterInfo.GetLocalizedDisplayNameInDatabase(actor.Name);
-			
-			Sprite actorSpritePortrait = (dialogueActor && dialogueActor.GetPortraitSprite()) ?
-				dialogueActor.GetPortraitSprite() :
-				actor.GetPortraitSprite();
-				
-			if (actor.IsPlayer)
-			{
-				panel.SetActorPortraitSprite(actorName, actorSpritePortrait);
-			}
-			else if (panel.Visibility == UIVisibility.AlwaysFromStart)
-            {
-                panel.OpenOnStartConversation(actorSpritePortrait, actorName, dialogueActor);
-            }
-        }
-
-        protected virtual Transform GetActorTransform(string actorName)
-        {
-            var actorTransform = CharacterInfo.GetRegisteredActorTransform(actorName);
-            if (actorTransform == null)
-            {
-                var go = GameObject.Find(actorName);
-                if (go != null) actorTransform = go.transform;
-            }
-            return actorTransform;
-        }
-
-        public virtual UIToolkitSubtitleElements GetActorTransformPanel(Transform speakerTransform, UIToolkitSubtitleElements defaultPanel, 
+		
+        public virtual GameUIToolkitSubtitleElements GetActorTransformPanel(Transform speakerTransform, GameUIToolkitSubtitleElements defaultPanel, 
             out DialogueActor dialogueActor)
         {
             dialogueActor = null;
@@ -175,14 +109,8 @@ namespace Core.Dialogue
             return defaultPanel;
         }
 
-        protected virtual void HideOtherApplicablePanels(UIToolkitSubtitleElements panel)
+        protected virtual void HideOtherApplicablePanels(GameUIToolkitSubtitleElements panel)
         {
-            foreach (var otherPanel in dialogueElements.SubtitlePanelElements)
-            {
-                if (otherPanel.IsSamePanel(panel)) continue;
-                if (otherPanel.ShouldStayVisible) continue;
-                otherPanel.Hide();
-            }
         }
 
         public override void ShowResponses(Subtitle subtitle, Response[] responses, float timeout)
@@ -223,6 +151,17 @@ namespace Core.Dialogue
             rootVisualElement.pickingMode = value ? PickingMode.Position : PickingMode.Ignore;
         }
 
+		public static Transform GetActorTransform(string actorName)
+		{
+			var actorTransform = CharacterInfo.GetRegisteredActorTransform(actorName);
+			if (actorTransform == null)
+			{
+				var go = GameObject.Find(actorName);
+				if (go != null) actorTransform = go.transform;
+			}
+			return actorTransform;
+		}
+		
         #endregion
 
     }

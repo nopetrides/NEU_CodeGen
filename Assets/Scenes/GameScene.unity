@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 83292199}
   - component: {fileID: 83292198}
   - component: {fileID: 83292201}
+  - component: {fileID: 83292202}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -256,6 +257,18 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &83292202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83292197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf58bdf958fd8342bc17efab6bcd4fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &516820891
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +796,7 @@ MonoBehaviour:
   UniStormMenuKey: 27
   UniStormCanvas: {fileID: 0}
   m_MenuToggle: 0
-  TabNumber: 2
+  TabNumber: 0
   TimeTabNumbers: 0
   WeatherTabNumbers: 1
   CelestialTabNumbers: 0
@@ -795,8 +808,8 @@ MonoBehaviour:
   MoonFoldout: 1
   AtmosphereFoldout: 1
   FogFoldout: 0
-  WeatherFoldout: 1
-  LightningFoldout: 1
+  WeatherFoldout: 0
+  LightningFoldout: 0
   CameraFoldout: 1
   SettingsFoldout: 1
   CloudsFoldout: 0
@@ -3932,7 +3945,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1978705486}
-  - component: {fileID: 1978705485}
   - component: {fileID: 1978705487}
   m_Layer: 0
   m_Name: GameDialogueHandler
@@ -3941,22 +3953,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1978705485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1978705484}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffc32931bb954ff5bbe44caa779f9454, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _oriseiImage: {fileID: 2800000, guid: 70d58e06015121740b76d197c725274a, type: 3}
-  _goruImage: {fileID: 2800000, guid: f1365541c3e697c4d9d138f92aaa69f4, type: 3}
-  _autoPlayDelay: 3
-  _skipAllSpeed: 0.5
 --- !u!4 &1978705486
 Transform:
   m_ObjectHideFlags: 0

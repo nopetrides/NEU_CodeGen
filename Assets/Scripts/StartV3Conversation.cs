@@ -22,7 +22,7 @@ public class StartV3Conversation : MonoBehaviour
         }
 
         // Start the conversation after a short delay to ensure everything is initialized
-        Invoke("StartConversation", startDelay);
+        Invoke(nameof(StartConversation), startDelay);
     }
 
     private void StartConversation()

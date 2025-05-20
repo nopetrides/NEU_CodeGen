@@ -1,0 +1,58 @@
+.button-container {
+    width: 350px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: rgba(0, 162, 232, 0.4);
+}
+
+.menu-button:hover {
+    border-color: rgb(135, 206, 250);
+    color: rgb(255, 255, 255);
+    transition-duration: 0.2s;
+    scale: 1.05 1.05;
+}
+
+.menu-button:active {
+    border-color: rgb(255, 215, 0);
+    color: rgb(255, 215, 0);
+    transition-duration: 0.1s;
+}
+
+.menu-button:disabled {
+    opacity: 0.4;
+    border-color: rgba(255, 255, 255, 0.3);
+    color: rgba(200, 200, 200, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.2);
+}
+
+.dialogue-button {
+}
+
+.dialogue-button:hover {
+}
+
+.menu-button {
+    width: 220px;
+    height: 60px;
+    border-width: 3px;
+    border-color: rgba(0, 162, 232, 0.6);
+    border-radius: 30px;
+    color: rgb(37, 102, 174);
+    -unity-font-style: bold;
+    margin-top: 20px;
+    font-size: 32px;
+    -unity-font-definition: url("project://database/Assets/Fonts/wolves.engraven.ttf?fileID=12800000&guid=38d81d43a3fc6f446a8ca0314e50cab3&type=3#wolves.engraven");
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.dialogue-button:active {
+}
+
+.dialogue-button:disabled {
+}

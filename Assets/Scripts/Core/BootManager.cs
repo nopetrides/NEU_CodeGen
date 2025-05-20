@@ -27,7 +27,7 @@ namespace Core
             await Game.Scene.LoadSceneAsync(_mainMenuSceneName);
             
             // Show main menu
-            Game.UI.Show<MainMenu>();
+            Game.UI.Show<MainMenuComponent>();
             
             // Only destroy if the GameObject still exists
             if (bootManagerGo != null)

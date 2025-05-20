@@ -400,8 +400,8 @@ namespace PixelCrushers.DialogueSystem
         /// <param name="portraitSprite">Portrait sprite.</param>
         public virtual void SetActorPortraitSprite(string actorName, Sprite portraitSprite)
         {
-            dialogueControls.npcSubtitleControls.SetActorPortraitSprite(actorName, portraitSprite);
-            dialogueControls.pcSubtitleControls.SetActorPortraitSprite(actorName, portraitSprite);
+            dialogueControls.npcSubtitleControls.SetPortraitSprite(actorName, portraitSprite);
+            dialogueControls.pcSubtitleControls.SetPortraitSprite(actorName, portraitSprite);
             dialogueControls.responseMenuControls.SetActorPortraitSprite(actorName, portraitSprite);
         }
 

@@ -77,7 +77,7 @@ namespace PixelCrushers.DialogueSystem
         /// </summary>
         /// <param name="actorName">Actor name in database.</param>
         /// <param name="sprite">Portrait sprite.</param>
-        public virtual void SetActorPortraitSprite(string actorName, Sprite sprite)
+        public virtual void SetPortraitSprite(string actorName, Sprite sprite)
         {
         }
 

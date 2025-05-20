@@ -65,7 +65,7 @@ namespace PixelCrushers.DialogueSystem.UIToolkit
                 var dialogueActorSprite = dialogueActor.GetPortraitSprite();
                 if (dialogueActorSprite != null) actorSprite = dialogueActorSprite;
             }
-            SetActorPortraitSprite(actorName, actorSprite);
+            SetPortraitSprite(actorName, actorSprite);
             if (SubtitleLabel != null) SubtitleLabel.text = string.Empty;
         }
 
@@ -79,10 +79,10 @@ namespace PixelCrushers.DialogueSystem.UIToolkit
         {
             SetActive(true);
             if (SubtitleLabel != null) SubtitleLabel.text = subtitle.formattedText.text;
-            SetActorPortraitSprite(subtitle.speakerInfo.Name, subtitle.GetSpeakerPortrait());
+            SetPortraitSprite(subtitle.speakerInfo.Name, subtitle.GetSpeakerPortrait());
         }
 
-        public override void SetActorPortraitSprite(string actorName, Sprite sprite)
+        public override void SetPortraitSprite(string actorName, Sprite sprite)
         {
             if (PortraitLabel != null) PortraitLabel.text = actorName;
             if (PortraitImage != null)

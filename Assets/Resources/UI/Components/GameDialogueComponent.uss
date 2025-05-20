@@ -1,0 +1,128 @@
+.dialogue-option {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 12px;
+    background-color: rgba(28, 40, 65, 0.75);
+    border-width: 4px;
+    border-color: rgb(59, 93, 201);
+    color: rgb(220, 240, 255);
+    border-left-width: 8px;
+    border-left-color: rgb(0, 162, 232);
+    -unity-font-style: bold;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.7);
+    letter-spacing: 2px;
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-slice-left: 8;
+    -unity-slice-top: 8;
+    -unity-slice-right: 8;
+    -unity-slice-bottom: 8;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.1);
+    border-top-width: 6px;
+    border-top-color: rgba(0, 162, 232, 0.3);
+    font-size: 32px;
+    height: 80px;
+    -unity-text-align: lower-center;
+    background-image: none;
+}
+
+.panelBackground {
+    border-width: 6px;
+    border-color: rgb(59, 93, 201);
+    background-color: rgba(20, 30, 50, 0.9);
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.15);
+    -unity-background-scale-mode: scale-and-crop;
+    border-left-width: 12px;
+    border-left-color: rgba(0, 162, 232, 0.7);
+    -unity-slice-left: 16;
+    -unity-slice-top: 16;
+    -unity-slice-right: 16;
+    -unity-slice-bottom: 16;
+}
+
+.subtitleText {
+    margin-bottom: 8px;
+    color: rgb(220, 240, 255);
+    font-size: 42px;
+    padding: 15px;
+    -unity-font-style: bold;
+    letter-spacing: 2px;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.8);
+    -unity-paragraph-spacing: 8px;
+}
+
+.subtitleButton {
+    border-width: 4px;
+    border-color: rgb(59, 93, 201);
+    color: rgb(220, 240, 255);
+    background-color: rgba(28, 40, 65, 0.8);
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.3);
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-font-style: bold;
+    letter-spacing: 1px;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.7);
+    border-radius: 0;
+    padding: 10px;
+}
+
+.responseButton {
+    border-width: 4px;
+    border-color: rgb(59, 93, 201);
+    color: rgb(220, 240, 255);
+    background-color: rgba(28, 40, 65, 0.8);
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.3);
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-font-style: bold;
+    letter-spacing: 1px;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.7);
+    border-radius: 0;
+    padding: 10px;
+}
+
+.timer {
+    border-width: 4px;
+    border-color: rgb(59, 93, 201);
+    color: rgb(220, 240, 255);
+    background-color: rgba(28, 40, 65, 0.8);
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.3);
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-font-style: bold;
+    letter-spacing: 1px;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.7);
+    border-radius: 0;
+    padding: 10px;
+}
+
+#options-container {
+    border-width: 4px;
+    border-color: rgb(59, 93, 201);
+    color: rgb(220, 240, 255);
+    background-color: rgba(28, 40, 65, 0.8);
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.3);
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-font-style: bold;
+    letter-spacing: 1px;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.7);
+    border-radius: 0;
+    padding: 10px;
+}
+
+#SubtitleLabel {
+    border-width: 4px;
+    border-color: rgb(59, 93, 201);
+    color: rgb(220, 240, 255);
+    background-color: rgba(28, 40, 65, 0.8);
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.3);
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-font-style: bold;
+    letter-spacing: 1px;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.7);
+    border-radius: 0;
+    padding: 10px;
+}

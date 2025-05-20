@@ -22,3 +22,9 @@ MonoBehaviour:
     _path: Assets/Resources/UI/Components/DialogueUI.uxml
   - _type: 0
     _path: Assets/Resources/UI/Components/SettingsMenu.uxml
+  - _type: 0
+    _path: Assets/Resources/UI/Components/GameDialogueComponent.uxml
+  - _type: 0
+    _path: Assets/Resources/UI/Components/MainMenuComponent.uxml
+  - _type: 0
+    _path: Assets/Resources/UI/Components/SettingsMenuComponent.uxml

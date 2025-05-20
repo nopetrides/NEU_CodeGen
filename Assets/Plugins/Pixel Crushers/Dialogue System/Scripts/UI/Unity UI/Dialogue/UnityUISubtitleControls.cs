@@ -257,7 +257,7 @@ namespace PixelCrushers.DialogueSystem
         /// </summary>
         /// <param name="actorName">Actor name in database.</param>
         /// <param name="portraitSprite">Portrait sprite.</param>
-        public override void SetActorPortraitSprite(string actorName, Sprite portraitSprite)
+        public override void SetPortraitSprite(string actorName, Sprite portraitSprite)
         {
             if ((currentSubtitle != null) && string.Equals(currentSubtitle.speakerInfo.nameInDatabase, actorName))
             {

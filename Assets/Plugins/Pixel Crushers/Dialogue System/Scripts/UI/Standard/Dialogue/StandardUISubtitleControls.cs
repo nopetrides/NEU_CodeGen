@@ -760,7 +760,7 @@ namespace PixelCrushers.DialogueSystem
         /// </summary>
         /// <param name="actorName">Actor name in database.</param>
         /// <param name="portraitSprite">Portrait sprite.</param>
-        public override void SetActorPortraitSprite(string actorName, Sprite portraitSprite)
+        public override void SetPortraitSprite(string actorName, Sprite portraitSprite)
         {
             if (string.IsNullOrEmpty(actorName)) return;
             for (int i = 0; i < m_builtinPanels.Count; i++)
