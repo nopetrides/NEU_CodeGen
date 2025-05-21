@@ -125,7 +125,7 @@ namespace Core.Dialogue
 
         protected virtual void OnClickResponse(int index)
         {
-			Game.Audio.PlayUISound("ButtonClick");
+			Game.Audio.PlayUISound("ButtonPress");
             if (ResponsesByButtonIndex.TryGetValue(index, out var response))
             {
                 Hide();

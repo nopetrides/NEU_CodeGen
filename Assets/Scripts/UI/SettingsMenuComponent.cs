@@ -10,6 +10,8 @@ namespace Core
         private Label _volumeValue;
         private Toggle _muteToggle;
         private Button _returnButton;
+        private Button _quitButton;
+        
 
         // Audio settings
 		/// <summary>
@@ -31,6 +33,7 @@ namespace Core
             _volumeValue = Root.Q<Label>("volume-value");
             _muteToggle = Root.Q<Toggle>("mute-toggle");
             _returnButton = Root.Q<Button>("return-button");
+            _quitButton = Root.Q<Button>("quit-button");
 
             // Load saved audio settings
             LoadAudioSettings();
@@ -44,9 +47,13 @@ namespace Core
             _volumeSlider.RegisterValueChangedCallback(OnVolumeChanged);
             _muteToggle.RegisterValueChangedCallback(OnMuteToggled);
             _returnButton.RegisterCallback<ClickEvent>(OnReturnClicked);
+            _quitButton.RegisterCallback<ClickEvent>(OnQuitClicked);
 
             // Button hover sound handlers
             _returnButton.RegisterCallback<MouseEnterEvent>(evt => Game.Audio.PlayUISound("ButtonHover"));
+            _quitButton.RegisterCallback<MouseEnterEvent>(evt => Game.Audio.PlayUISound("ButtonHover"));
+
+            
         }
 
         private void OnVolumeChanged(ChangeEvent<float> evt)
@@ -90,6 +97,24 @@ namespace Core
 			var scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
 			if (scene.name == "MainMenuScene")
 				Game.UI.ShowMainMenu();
+        }
+
+        private void OnQuitClicked(ClickEvent evt)
+        {
+            Game.Audio.PlayUISound("ButtonPress");
+
+            try
+            {
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Error quitting game: {e.Message}");
+            }
         }
 
         private void LoadAudioSettings()

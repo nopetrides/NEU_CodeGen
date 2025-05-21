@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using PixelCrushers.DialogueSystem;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// This script starts the "v3" conversation when enabled.
 /// </summary>
 public class StartV3Conversation : MonoBehaviour
 {
-    [Tooltip("The name of the conversation to start")]
-    public string conversationName = "v3";
+    [FormerlySerializedAs("conversationName")] [Tooltip("The name of the conversation to start")]
+    public string ConversationName = "v3";
 
-    [Tooltip("Delay before starting the conversation (in seconds)")]
-    public float startDelay = 0.5f;
+    [FormerlySerializedAs("startDelay")] [Tooltip("Delay before starting the conversation (in seconds)")]
+    public float StartDelay = 0.5f;
 
     private void Start()
     {
@@ -22,7 +23,7 @@ public class StartV3Conversation : MonoBehaviour
         }
 
         // Start the conversation after a short delay to ensure everything is initialized
-        Invoke(nameof(StartConversation), startDelay);
+        Invoke(nameof(StartConversation), StartDelay);
     }
 
     private void StartConversation()
@@ -35,10 +36,10 @@ public class StartV3Conversation : MonoBehaviour
             return;
         }
 
-        var conversation = database.GetConversation(conversationName);
+        var conversation = database.GetConversation(ConversationName);
         if (conversation == null)
         {
-            Debug.LogError($"Conversation '{conversationName}' not found in the dialogue database. Check the conversation name or make sure it's included in the database.");
+            Debug.LogError($"Conversation '{ConversationName}' not found in the dialogue database. Check the conversation name or make sure it's included in the database.");
 
             // List available conversations to help debugging
             Debug.Log("Available conversations:");
@@ -49,9 +50,18 @@ public class StartV3Conversation : MonoBehaviour
             return;
         }
 
-        Debug.Log($"Starting conversation: {conversationName}");
+        Debug.Log($"Starting conversation: {ConversationName}");
 
         // Start the conversation using the DialogueManager
-        DialogueManager.StartConversation(conversationName);
+        DialogueManager.StartConversation(ConversationName);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            DialogueManager.Instance.StopAllConversations();
+            DialogueManager.StartConversation(ConversationName);
+        }
     }
 }

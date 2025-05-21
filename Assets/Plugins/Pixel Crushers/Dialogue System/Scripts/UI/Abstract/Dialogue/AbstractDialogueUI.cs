@@ -125,7 +125,7 @@ namespace PixelCrushers.DialogueSystem
         /// </value>
         protected virtual bool AreNonDialogueControlsVisible
         {
-            get { return alertControls.isVisible || qteControls.areVisible; }
+            get { return false; } //alertControls.isVisible || qteControls.areVisible; }
         }
 
         /// <summary>

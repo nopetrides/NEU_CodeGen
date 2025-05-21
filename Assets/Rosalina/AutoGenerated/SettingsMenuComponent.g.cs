@@ -29,9 +29,15 @@ public partial class SettingsMenuComponent
 
     public Button ReturnButton { get; private set; }
 
+    public Button QuitButton { get; private set; }
+
     public VisualElement MuteControl { get; private set; }
 
     public VisualElement VolumeControl { get; private set; }
+
+    public VisualElement ReturnParent { get; private set; }
+
+    public VisualElement QuitParent { get; private set; }
 
     public Label SettingsTitle { get; private set; }
 
@@ -49,8 +55,11 @@ public partial class SettingsMenuComponent
         VolumeSlider = Root?.Q<Slider>("volume-slider");
         VolumeDisplay = Root?.Q<VisualElement>("volume-display");
         ReturnButton = Root?.Q<Button>("return-button");
+        QuitButton = Root?.Q<Button>("quit-button");
         MuteControl = Root?.Q<VisualElement>("mute-control");
         VolumeControl = Root?.Q<VisualElement>("volume-control");
+        ReturnParent = Root?.Q<VisualElement>("return-parent");
+        QuitParent = Root?.Q<VisualElement>("quit-parent");
         SettingsTitle = Root?.Q<Label>("settings-title");
         SettingsPanel = Root?.Q<VisualElement>("settings-panel");
         SettingsMenuContainer = Root?.Q<VisualElement>("settings-menu-container");
